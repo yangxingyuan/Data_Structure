@@ -56,27 +56,27 @@ public class Tries
         return get( root, keyList, 0 );
     }
 
-    private Node get ( Node _root, String[] keyList, int deep )
+    private Node get ( Node root, String[] keyList, int deep )
     {
-        if ( _root == null )
+        if ( root == null )
         {
             return null;
         }
 
         String curKey = keyList[deep];
-        int cmp = curKey.compareTo( _root.key );
+        int cmp = curKey.compareTo( root.key );
         if ( cmp < 0 )
         {
-            return get( _root.left, keyList, deep );
+            return get( root.left, keyList, deep );
         } else if ( 0 < cmp )
         {
-            return get( _root.right, keyList, deep );
+            return get( root.right, keyList, deep );
         } else if ( deep < keyList.length - 1 )
         {
-            return get( _root.mid, keyList, deep + 1 );
+            return get( root.mid, keyList, deep + 1 );
         } else
         {
-            return _root;
+            return root;
         }
     }
 
