@@ -58,7 +58,7 @@ public class Tries
 
     private Node get ( Node _root, String[] keyList, int deep )
     {
-        if (_root == null)
+        if ( _root == null )
         {
             return null;
         }
@@ -86,31 +86,31 @@ public class Tries
         root = put( root, keyList, 0, value );
     }
 
-    private Node put ( Node _root, String[] keyList, int deep, String value )
+    private Node put ( Node root, String[] keyList, int deep, String value )
     {
         String curKey = keyList[deep];
-        if ( _root == null )
+        if ( root == null )
         {
-            _root = new Node( curKey );
+            root = new Node( curKey );
         }
 
-        int cmp = curKey.compareTo( _root.key );
+        int cmp = curKey.compareTo( root.key );
         if ( cmp < 0 )
         {
-            _root.left = put( _root.left, keyList, deep, value );
+            root.left = put( root.left, keyList, deep, value );
         } else if ( 0 < cmp )
         {
-            _root.right = put( _root.right, keyList, deep, value );
+            root.right = put( root.right, keyList, deep, value );
         } else if ( deep < keyList.length - 1 )
         {
-            _root.mid = put( _root.mid, keyList, deep + 1, value );
+            root.mid = put( root.mid, keyList, deep + 1, value );
         } else
         {
             // add value
-            _root.value = value;
-            return _root;
+            root.value = value;
+            return root;
         }
-        return _root;
+        return root;
     }
 
     public void Collection()
